@@ -5,6 +5,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const htmlWebpackPlugin = require('html-webpack-plugin')
 
+const  webpack = require('webpack')
 
 module.exports = {
     mode: "development",
@@ -12,7 +13,8 @@ module.exports = {
     entry: './src/main.js',
     devServer: {
         contentBase: './dist',
-        open: true
+        open: true,
+        hot:true
     },
     // 打包的出口
     output: {
@@ -53,6 +55,7 @@ module.exports = {
         new htmlWebpackPlugin({
             template: './index.html'
         }),
+        new webpack.HotModuleReplacementPlugin()
     ],
     resolve: {
         alias: {

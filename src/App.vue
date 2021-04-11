@@ -40,5 +40,5 @@ export default {
 
 <style lang="stylus" scoped>
 li:nth-of-type(odd)
-  color: #bbffaa
+  color: red
 </style>
