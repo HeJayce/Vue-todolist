@@ -1,5 +1,12 @@
 <template>
-  <div><h1>This is App</h1></div>
+  <div>
+    <h1>To do list</h1>
+    <input type="text"/>
+    <button>添加</button>
+    <ul>
+      <li v-for="(item,index) in todoData" :key="index">{{ item }}</li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -10,12 +17,20 @@
 import './assets/styles/global.styl'
 
 export default {
-  name: "App"
+  name: "App",
+  data(){
+    return {
+      todoData:[
+          "todo1",
+          "todo2",
+          "todo3"
+      ]
+    }
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
-h1
-  color: red
-  transform translate(100px,100px)
+li:nth-of-type(odd)
+  color: #bbffaa
 </style>

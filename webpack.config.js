@@ -10,6 +10,10 @@ module.exports = {
     mode: "development",
     // 打包的入口
     entry: './src/main.js',
+    devServer: {
+        contentBase: './dist',
+        open: true
+    },
     // 打包的出口
     output: {
         filename: 'bundle.js',
@@ -21,22 +25,22 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
-            },{
+            }, {
                 test: /\.(jpg|jpeg|png|svg)$/,
                 loader: "url-loader",
                 options: {
                     name: '[name].[ext]',
                     limit: 2048
                 }
-            },{
-            test: /\.css/,
-                use: ['style-loader','css-loader']
-            },{
+            }, {
+                test: /\.css/,
+                use: ['style-loader', 'css-loader']
+            }, {
                 test: /\.styl(us)?$/,
                 use: [
                     'vue-style-loader',
                     'css-loader',
-                    'postcss-loader',
+                    // 'postcss-loader',
                     'stylus-loader'
                 ]
             }
