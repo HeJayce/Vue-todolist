@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>To do list</h1>
-    <input type="text"/>
-    <button>添加</button>
+    <input type="text" v-model="content"/>
+    <button @click="add">添加</button>
     <ul>
       <li v-for="(item,index) in todoData" :key="index">{{ item }}</li>
     </ul>
@@ -20,11 +20,19 @@ export default {
   name: "App",
   data(){
     return {
+      content:'',
       todoData:[
           "todo1",
           "todo2",
           "todo3"
       ]
+    }
+  },
+  methods: {
+    add(){
+      if (this.content === "") return
+      this.todoData.push(this.content)
+      this.content = ""
     }
   }
 }
