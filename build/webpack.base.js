@@ -5,25 +5,27 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const htmlWebpackPlugin = require('html-webpack-plugin')
 
-const  webpack = require('webpack')
+const webpack = require('webpack')
 
 module.exports = {
-    mode: "development",
+
     // 打包的入口
     entry: './src/main.js',
-    devServer: {
-        contentBase: './dist',
-        open: true,
-        hot:true
-    },
     // 打包的出口
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: 'main.js',
+        path: path.resolve(__dirname, '../dist')
     },
     // 打包规则
     module: {
         rules: [
+            // {
+            //     test: /\.m?js$/,
+            //     exclude: /node_modules/,
+            //     use: {
+            //         loader: "babel-loader",
+            //     }
+            // },
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
@@ -55,11 +57,13 @@ module.exports = {
         new htmlWebpackPlugin({
             template: './index.html'
         }),
-        new webpack.HotModuleReplacementPlugin()
     ],
     resolve: {
         alias: {
-            'vue': 'vue/dist/vue.js'
+            'vue': 'vue/dist/vue.js',
+            '@': path.resolve(__dirname, '../src'),
+            'styles': path.resolve(__dirname, '../src/assets/styles')
+
         }
     }
 }

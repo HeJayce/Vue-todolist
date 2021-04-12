@@ -1,11 +1,7 @@
 <template>
   <div>
-    <h1>To do list</h1>
-    <input type="text" v-model="content"/>
-    <button @click="add">添加</button>
-    <ul>
-      <li v-for="(item,index) in todoData" :key="index">{{ item }}</li>
-    </ul>
+    <main-header></main-header>
+    <main-todo></main-todo>
   </div>
 </template>
 
@@ -15,30 +11,20 @@
 // import  './assets/styles/test.css'
 
 import './assets/styles/global.styl'
+import mainHeader from './components/mainHeader.vue'
+import mainTodo from './components/MainTodo/mainTodo.vue'
+
 
 export default {
   name: "App",
-  data(){
-    return {
-      content:'',
-      todoData:[
-          "todo1",
-          "todo2",
-          "todo3"
-      ]
-    }
-  },
-  methods: {
-    add(){
-      if (this.content === "") return
-      this.todoData.push(this.content)
-      this.content = ""
-    }
+  methods: {},
+  components: {
+    mainHeader,
+    mainTodo
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-li:nth-of-type(odd)
-  color: red
+
 </style>
