@@ -1,9 +1,11 @@
 <template>
+
   <div :class="['todo-item',todo.completed ? 'completed' : '']">
     <input type="checkbox" v-model="todo.completed"/>
     <label>{{todo.content}}</label>
     <button @click="delItem"></button>
   </div>
+
 </template>
 
 <script>
@@ -24,6 +26,7 @@ export default {
 <style lang="stylus" scoped>
 @import "~styles/theme.styl"
 @import "~styles/mixins.styl"
+//@import "~styles/reset.css"
 
 .todo-item
 
@@ -40,7 +43,7 @@ export default {
       color $lightred
   &.completed
     label
-      color red
+      color #57fb43
       text-decoration line-through
 
 
@@ -70,6 +73,22 @@ export default {
     //outline none
     cleanDefaultStyle()
     cursor: pointer
+
+.v-enter,
+.v-leave-active
+  opacity: 0;
+  transform: translateX(30px)
+
+.v-leave-active,
+.v-enter-active
+  transition: all 0.2s ease
+
+.v-move
+  transition: all 0.2s ease
+
+.v-leave-active
+  position: absolute
+
 
 
 
